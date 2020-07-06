@@ -2,6 +2,8 @@ package kr.co.tjoeun.listview_20200706
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+import kr.co.tjoeun.listview_20200706.adapters.StudentAdapter
 import kr.co.tjoeun.listview_20200706.datas.Student
 
 class MainActivity : AppCompatActivity() {
@@ -9,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 //    학생 목록을 담고 있는 변수
     val mStudentList = ArrayList<Student>()
 
-
+    lateinit var mAdapter : StudentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(Student("채정실", "서울시 용산구", 1991))
 
 
+//        미뤄둔 어댑터 객체화를 실행
+        mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
+
+//        완성된 어댑터를 리스트뷰와 연결
+        studentListView.adapter = mAdapter
 
 
     }
